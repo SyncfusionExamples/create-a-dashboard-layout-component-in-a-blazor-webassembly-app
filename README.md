@@ -5,6 +5,7 @@ A quick-start project that helps you create a Syncfusion Blazor Dashboard Layout
 Watch the video now: Coming soon...
 
 Documentation: https://blazor.syncfusion.com/documentation/dashboard-layout/getting-started
+
 Online example: https://blazor.syncfusion.com/demos/dashboard-layout/default 
 
 ## Project prerequisites
