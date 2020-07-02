@@ -1,0 +1,137 @@
+﻿@page "/"
+@using Syncfusion.Blazor.Layouts
+@using Syncfusion.Blazor.Charts
+@using Syncfusion.Blazor.Grids 
+
+
+<div style="width:100%">
+    <SfDashboardLayout Columns="6" AllowResizing="true">
+        <DashboardLayoutPanels>
+            <DashboardLayoutPanel Row="0" Col="0" SizeX="4" SizeY="2">
+                <HeaderTemplate><div class='header'> Customers Count </div></HeaderTemplate>
+                <ContentTemplate>
+                    <div style="height:100%; width:100%;">
+                        <SfChart ID="linechart" @ref="linechartObj">
+                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime">
+                            </ChartPrimaryXAxis>
+                            <ChartSeriesCollection>
+                                <ChartSeries DataSource="@chartDataSource" XName="XValue" YName="YValue" Type="ChartSeriesType.Line">
+                                    <ChartMarker Visible="true">
+                                        <ChartDataLabel Visible="true" Position="LabelPosition.Top">
+                                        </ChartDataLabel>
+                                    </ChartMarker>
+                                </ChartSeries>
+                            </ChartSeriesCollection>
+                        </SfChart>
+                    </div>
+                </ContentTemplate>
+            </DashboardLayoutPanel>
+            <DashboardLayoutPanel Row="0" Col="4" SizeX="2" SizeY="2">
+                <HeaderTemplate><div class='header'> Sales Ratio in Countries </div></HeaderTemplate>
+                <ContentTemplate>
+                    <div style="height:100%; width:100%;">
+                        <SfChart ID="barchart" @ref="barchartObj">
+                            <ChartPrimaryXAxis Title="Country" EnableTrim="true" ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            </ChartPrimaryXAxis>
+                            <ChartSeriesCollection>
+                                <ChartSeries DataSource="@chartDataSource" XName="X" YName="Y" Type="ChartSeriesType.Bar">
+                                </ChartSeries>
+                            </ChartSeriesCollection>
+                        </SfChart>
+                    </div>
+                </ContentTemplate>
+            </DashboardLayoutPanel>
+            <DashboardLayoutPanel Row="2" Col="0" SizeX="6" SizeY="2">
+                <HeaderTemplate><div class='header'> Top Customers Details</div></HeaderTemplate>
+                <ContentTemplate>
+                    <div style="height:100%; width:100%;">
+                        <SfGrid ID="grid" DataSource="@Orders">
+                            <GridColumns>
+                                <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                                <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="130"></GridColumn>
+                                <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="yMd" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+                                <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                            </GridColumns>
+                        </SfGrid>
+                    </div>
+                </ContentTemplate>
+            </DashboardLayoutPanel>
+        </DashboardLayoutPanels>
+    </SfDashboardLayout>
+</div>
+
+@code{
+    SfChart barchartObj;
+    SfChart linechartObj;
+    DateTime[] Value = new DateTime[] { new DateTime(2006, 01, 01), new DateTime(2008, 01, 01) };
+
+    public class ChartData
+    {
+        public DateTime XValue;
+        public double YValue;
+        public string X;
+        public double Y;
+        public string Country;
+        public string X1;
+        public double Y1;
+        public double Y2;
+        public double Y3;
+        public double Y4;
+    }
+
+    public List<ChartData> chartDataSource = new List<ChartData>
+    {
+        new ChartData { XValue = new DateTime(2005, 01, 01), YValue = 21, X = "USA", Y =300.2, Country = "USA: 72", X1= "2012"},
+        new ChartData { XValue = new DateTime(2006, 01, 01), YValue = 24, X = "Russia", Y = 103.1, Country = "RUS: 103.1", X1= "2013"},
+        new ChartData { XValue = new DateTime(2007, 01, 01), YValue = 36, X = "Brazil", Y = 139.1, Country = "BRZ: 139.1", X1= "2014"},
+        new ChartData { XValue = new DateTime(2008, 01, 01), YValue = 38, X = "India", Y = 262.1, Country = "IND: 262.1", X1= "2015"},
+    };
+
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+    }
+    public List<Order> Orders { get; set; } = Enumerable.Range(1, 6).Select(x => new Order()
+    {
+        OrderID = 1000 + x,
+        CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+        Freight = 2.1 * x,
+        OrderDate = DateTime.Now.AddDays(-x),
+    }).ToList();
+}
+
+<style>
+    #linechart, #barchart, #grid {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    .header {
+        font-size: medium;
+        font-weight: bold;
+    }
+</style>
+
+@*<div style="width:100%">
+        <SfDashboardLayout Columns="6" >
+            <DashboardLayoutPanels>
+                <DashboardLayoutPanel Row="0" Col="0" SizeX="4" SizeY="2">
+                    <HeaderTemplate>PanelHeader1</HeaderTemplate>
+                    <ContentTemplate>PanelContent1</ContentTemplate>
+                </DashboardLayoutPanel>
+                <DashboardLayoutPanel Row="0" Col="4" SizeX="2" SizeY="2">
+                    <HeaderTemplate>PanelHeader2</HeaderTemplate>
+                    <ContentTemplate>PanelContent2</ContentTemplate>
+                </DashboardLayoutPanel>
+                <DashboardLayoutPanel Row="2" Col="0" SizeX="6" SizeY="2">
+                    <HeaderTemplate>PanelHeader3</HeaderTemplate>
+                    <ContentTemplate>PanelContent3</ContentTemplate>
+                </DashboardLayoutPanel>
+            </DashboardLayoutPanels>
+        </SfDashboardLayout>
+    </div>*@
