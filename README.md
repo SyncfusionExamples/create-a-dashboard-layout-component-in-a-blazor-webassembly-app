@@ -1,59 +1,51 @@
-# Create a Dashboard Layout Component in a Blazor WebAssembly App
+# Dasboar Layout - Getting Started
 
-**Repository Description**  
-This repository contains a Blazor WebAssembly sample that demonstrates how to create and configure the Syncfusion Blazor Dashboard Layout component in a Blazor application.
+A compact Blazor WebAssembly sample demonstrating how to build an interactive [Blazor Dashboard Layout](https://blazor.syncfusion.com/documentation/dashboard-layout/getting-started) using Blazor components (Dashboard Layout, Grid, Charts, Themes).
 
-This sample explains how to add dashboard layout panels, configure panel positions, set panel sizes, and resize panels dynamically using the Dashboard Layout component.
+## Overview
 
-## Project Overview
-The purpose of this project is to help developers understand how to build interactive and customizable dashboards using the Syncfusion Blazor Dashboard Layout component. It showcases how dashboard panels can be arranged, resized, and managed dynamically within a Blazor WebAssembly application.
+This project demonstrates building an interactive, responsive dashboard in a Blazor WebAssembly app. It focuses on creating reusable dashboard panels, arranging them in a grid layout, and enabling runtime interactions (resize, drag-and-drop, and responsive breakpoints).
 
 ## Features
-- Integration of the Syncfusion Blazor Dashboard Layout component  
-- Creation and configuration of dashboard panels  
-- Set panel positions and sizes  
-- Support for resizing dashboard panels  
-- Interactive and responsive dashboard layout  
 
-## Examples
-- **Online demo:**  
-  https://blazor.syncfusion.com/demos/dashboard-layout/default
+- Create, position, and resize dashboard panels with code examples.
+- Embed data-driven grids and charts inside panels to visualize information.
+- Responsive behavior with simple state persistence for layout restore.
 
 ## Prerequisites
-Ensure the following requirements are met before running this project:
-- Visual Studio 2022  
-- .NET SDK compatible with Blazor WebAssembly  
 
-## Installation and Running the Application
-1. Check out or clone this repository to a local directory.
-2. Open the solution file using Visual Studio 2022.
-3. Restore the NuGet packages by rebuilding the solution.
-4. Build and run the project to view the Dashboard Layout component in the browser.
+* [.NET SDK 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) or later
+* [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later
+* [Visual Studio Code](https://code.visualstudio.com/)
 
-## Usage
-Run the application and interact with the dashboard layout to:
-- Add multiple dashboard panels  
-- Adjust panel size and position  
-- Resize panels dynamically  
-- Experiment with different layout configurations  
+## Getting Started
 
-## Documentation
-- **General Syncfusion documentation:**  
-  https://help.syncfusion.com/
-- **Blazor Introduction:**  
-  https://blazor.syncfusion.com/documentation/introduction
-- **Blazor Dashboard Layout Getting Started:**  
-  https://blazor.syncfusion.com/documentation/dashboard-layout/getting-started
+### Clone the repository
 
-## Additional Resources
-- Microsoft Blazor documentation:  
-  https://docs.microsoft.com/en-us/aspnet/core/blazor
+```bash
+git clone https://github.com/SyncfusionExamples/create-a-dashboard-layout-component-in-a-blazor-webassembly-app.git.git
+cd create-a-dashboard-layout-component-in-a-blazor-webassembly-app.git
+```
 
-## Troubleshooting
-- Ensure the correct .NET SDK and Visual Studio version are installed.
-- Rebuild the solution if NuGet package restore fails.
-- Restart the application if layout updates are not reflected.
-- Check browser developer tools for runtime or rendering errors.
+### Run with Visual Studio
 
-## Support
-For detailed API references, configuration guidance, and advanced usage examples, refer to the Syncfusion Blazor documentation links provided above.
+1. Open the solution file using Visual Studio 2022 or later.
+2. Restore the NuGet packages by rebuilding the solution.
+3. Build the project to ensure there are no compilation errors.
+4. Run the project.
+
+### Run with .NET CLI
+
+```bash
+# Restore dependencies
+dotnet restore
+
+# Run the project
+dotnet run
+```
+
+## Resources
+
+**Documentation**: https://blazor.syncfusion.com/documentation/dashboard-layout/getting-started
+
+**Online Examples**: https://blazor.syncfusion.com/demos/dashboard-layout/overview?theme=fluent2
